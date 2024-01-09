@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/modelo/Usuario';
 import { BaseDeDatosService } from 'src/app/servicios/base-de-datos.service';
 
@@ -9,7 +9,7 @@ import { BaseDeDatosService } from 'src/app/servicios/base-de-datos.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  constructor(private ruta: ActivatedRoute, private fbs: BaseDeDatosService) { }
+  constructor(private ruta: ActivatedRoute, private fbs: BaseDeDatosService,private r:Router) { }
   dni: any;
   usuario: Usuario = {
     idUsuario: 0,
@@ -29,6 +29,10 @@ export class MenuComponent implements OnInit {
       this.fbs.obtenerUsuarioPorDNI(this.dni).subscribe(res => {
         this.usuario = res;
         console.log(this.usuario);
+        if(this.usuario==null){
+          alert("No inicio Sesion Correctamente");
+          this.r.navigateByUrl("/inicio");
+        }
       });
     }
     console.log(this.ruta.snapshot.paramMap.get("dni"));

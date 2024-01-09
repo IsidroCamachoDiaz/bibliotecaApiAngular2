@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './menu.component';
 
-const routes: Routes = [{ path: '', component: MenuComponent ,children:[
-  {path:":dni",component:MenuComponent}
+const routes: Routes = [{ path: ':dni', component: MenuComponent ,children:[
+
 ]}];
 
 @NgModule({
