@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h2>Registrase en la Biblioteca</h2>
+            <form [formGroup]="formulario" (ngSubmit)="anadirFormulario()">
+
+                <div class="form-group">
+                    <label for="nombreUsuario">Nombre de Usuario:</label>
+                    <input class="form-control" formControlName="nombreUsuario" name="nombreUsuario">
+                </div>
+                <div *ngIf="formulario.controls['nombreUsuario'].errors" class="text-danger">
+                    El nombre de usuario es requerido
+                </div>
+
+                <div class="form-group">
+                    <label for="apellidosUsuario">Apellidos:</label>
+                    <input class="form-control" formControlName="apellidosUsuario" name="apellidosUsuario">
+                </div>
+                <div *ngIf="formulario.controls['apellidosUsuario'].errors" class="text-danger">
+                    Los apellidos es requerido
+                </div>
+                
+                <div class="form-group">
+                    <label for="dniUsuario">DNI:</label>
+                    <input class="form-control" formControlName="dniUsuario" name="dniUsuario">
+                </div>
+                <div *ngIf="formulario.controls['dniUsuario'].errors" class="text-danger">
+                    El dni es requerido
+                </div>
+
+                <div class="form-group">
+                    <label for="emailUsuario">Email:</label>
+                    <input class="form-control" formControlName="emailUsuario" name="emailUsuario" type="email">
+                </div>
+                <div *ngIf="formulario.controls['emailUsuario'].errors" class="text-danger">
+                    El Email es requerido
+                </div>
+
+                <div class="form-group">
+                    <label for="telefonoUsuario">Telefono:</label>
+                    <input class="form-control" formControlName="telefonoUsuario" name="telefonoUsuario">
+                </div>
+                <div *ngIf="formulario.controls['telefonoUsuario'].errors" class="text-danger">
+                    El telefono es requerido
+                </div>
+
+                <div class="form-group">
+                    <label for="claveUsuario">Contraseña:</label>
+                    <input class="form-control" formControlName="claveUsuario" name="claveUsuario" type="password">
+                </div>
+                <div *ngIf="formulario.controls['claveUsuario'].errors" class="text-danger">
+                    La Contraseña es requerido
+                </div>
+
+                <div class="form-group">
+                    <label for="claveUsuarioRepetida">Repita Contraseña:</label>
+                    <input class="form-control" formControlName="claveUsuarioRepetida" name="claveUsuarioRepetida" type="password">
+                </div>
+                <div *ngIf="formulario.controls['claveUsuarioRepetida'].errors" class="text-danger">
+                    La Contraseña es requerido
+                </div>
+
+                <button class="btn btn-info " type="submit" style="color:white" [disabled]="!formulario.valid">Iniciar Sesion</button>
+            </form>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
