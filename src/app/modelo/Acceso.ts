@@ -1,5 +1,5 @@
 export interface Acceso{
-  id_acceso: number;
-  codigo_acceso: string;
-  descripcion: string;
+  idAcceso: number;
+  codigoAcceso: string;
+  descripcionAcceso: string;
 }

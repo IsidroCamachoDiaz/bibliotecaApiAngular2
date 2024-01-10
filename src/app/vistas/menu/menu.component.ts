@@ -22,6 +22,9 @@ export class MenuComponent implements OnInit {
     tlfUsuario: ''
   }
 
+  datosPuros:any[]=[];
+  usuarios:Usuario[]=[];
+
   ngOnInit(): void {
 
     if (this.ruta.snapshot.paramMap.get("dni")) {
@@ -36,5 +39,29 @@ export class MenuComponent implements OnInit {
       });
     }
     console.log(this.ruta.snapshot.paramMap.get("dni"));
+
+    this.fbs.obtenerUsuarios().subscribe(res=>{
+      this.datosPuros=res;
+      for(let i=0;i<this.datosPuros.length;i++){
+        this.usuarios.push({
+          idUsuario: this.datosPuros[i].idUsuario,
+          apellidosUsuario: this.datosPuros[i].apellidosUsuario,
+          claveUsuario: this.datosPuros[i].claveUsuario,
+          dniUsuario: this.datosPuros[i].dniUsuario,
+          emailUsuario: this.datosPuros[i].emailUsuario,
+          estaBloqueadoUsuario: this.datosPuros[i].estaBloqueadoUsuario,
+          nombreUsuario: this.datosPuros[i].nombreUsuario,
+          tlfUsuario: this.datosPuros[i].tlfUsuario,
+          fchAltaUsuario:this.datosPuros[i].fchAltaUsuario,
+          fchBajaUsuario:this.datosPuros[i].fchBajaUsuario,
+          fchFinBloqueo:this.datosPuros[i].fchFinBloqueo,
+          acceso:this.datosPuros[i].acceso
+        });
+      }
+      console.log(res);
+      console.log(this.usuarios);
+      const ELEMENT_DATA: Usuario[] =this.usuarios;
+
+    });
   }
 }
