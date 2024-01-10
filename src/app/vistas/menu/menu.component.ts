@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { zip } from 'rxjs';
 import { Usuario } from 'src/app/modelo/Usuario';
 import { BaseDeDatosService } from 'src/app/servicios/base-de-datos.service';
+
+
+
 
 @Component({
   selector: 'app-menu',
@@ -9,6 +14,8 @@ import { BaseDeDatosService } from 'src/app/servicios/base-de-datos.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  dataSource:any;
+  displayedColumns: string[]=[];
   constructor(private ruta: ActivatedRoute, private fbs: BaseDeDatosService,private r:Router) { }
   dni: any;
   usuario: Usuario = {
@@ -57,11 +64,13 @@ export class MenuComponent implements OnInit {
           fchFinBloqueo:this.datosPuros[i].fchFinBloqueo,
           acceso:this.datosPuros[i].acceso
         });
+
+        this.displayedColumns=['dniUsuario', 'nombreUsuario', 'apellidosUsuario', 'tlfUsuario'];
+        this.dataSource = this.usuarios;
       }
       console.log(res);
       console.log(this.usuarios);
-      const ELEMENT_DATA: Usuario[] =this.usuarios;
-
+      
     });
   }
 }
